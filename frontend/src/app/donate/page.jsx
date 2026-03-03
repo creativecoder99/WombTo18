@@ -155,7 +155,7 @@ export default function DonatePage() {
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-2">Amount (INR)</label>
                             <input required type="number" min="100" value={formData.amount} onChange={e => setFormData({ ...formData, amount: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none text-xl font-bold text-slate-900 transition-all" placeholder="5000" />
-                            <p className="text-xs text-slate-500 mt-2">Become a Leading Contributor by covering 10% of a program's funding goal.</p>
+                            <p className="text-xs text-slate-500 mt-2">Become a Leading Contributor by covering 10% of a program&apos;s funding goal.</p>
                         </div>
 
                         <div>

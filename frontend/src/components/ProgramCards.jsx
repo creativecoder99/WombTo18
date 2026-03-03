@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Stethoscope, Leaf, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
 
 const iconMap = {
     "Healthcare": <Stethoscope className="w-5 h-5" />,
@@ -53,7 +54,7 @@ export default function ProgramCards() {
                                 <div key={prog.id} className="group rounded-3xl border border-slate-100 bg-white shadow-lg shadow-slate-200/40 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
                                     <div className="h-48 bg-slate-100 mb-6 relative overflow-hidden">
                                         {prog.imageUrl ? (
-                                            <img src={prog.imageUrl} alt={prog.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                            <Image fill src={prog.imageUrl} alt={prog.name} className="object-cover group-hover:scale-105 transition-transform duration-500" />
                                         ) : (
                                             <div className="absolute inset-0 bg-gradient-to-tr from-green-100 to-green-50"></div>
                                         )}

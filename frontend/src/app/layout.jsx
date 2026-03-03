@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import "./globals.css";
 
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
                 <header className="fixed top-0 w-full z-50 glass">
                     <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
                         <Link href="/" className="flex items-center gap-2">
-                            <img src="/logo.png" alt="WombTo18 Foundation" className="h-14 w-auto" />
+                            <Image src="/logo.png" alt="WombTo18 Foundation" width={200} height={56} className="h-14 w-auto" />
                         </Link>
                         <nav className="hidden md:flex gap-6 font-medium text-slate-700">
                             <Link href="/#programs" className="hover:text-primary transition-colors">Programs</Link>

@@ -1,5 +1,5 @@
-"use client";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function MediaCoverage() {
     const pressItems = [
@@ -51,8 +51,8 @@ export default function MediaCoverage() {
                 <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] gap-8 px-4">
                     {marqueeItems.map((item, idx) => (
                         <div key={idx} className="w-[400px] flex-shrink-0 bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-lg transition-shadow duration-300">
-                            <div className="h-12 mb-6">
-                                <img src={item.logo} alt={item.publisher} className="h-full object-contain mix-blend-multiply" />
+                            <div className="h-12 mb-6 relative">
+                                <Image fill src={item.logo} alt={item.publisher} className="object-contain mix-blend-multiply" />
                             </div>
                             <div className="text-xs font-bold text-slate-400 mb-3 tracking-widest uppercase">
                                 {item.date}
@@ -61,7 +61,7 @@ export default function MediaCoverage() {
                                 {item.headline}
                             </h3>
                             <p className="text-slate-600 mb-6 line-clamp-3">
-                                "{item.excerpt}"
+                                &quot;{item.excerpt}&quot;
                             </p>
                             <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-hover transition-colors">
                                 Read Article <ArrowRight className="w-4 h-4" />
