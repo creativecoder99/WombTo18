@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Program {
+  id                  String     @id @default(uuid())
+  name                String
+  description         String
+  category            String
+  totalRequired       Float
+  totalRaised         Float      @default(0)
+  beneficiariesHelped Int        @default(0)
+  isActive            Boolean    @default(true)
+  imageUrl            String?
+  donations           Donation[]
+}
+
+model Donation {
+  id                     String   @id @default(uuid())
+  donorName              String
+  email                  String
+  amount                 Float
+  programId              String
+  program                Program  @relation(fields: [programId], references: [id])
+  purpose                String?
+  paymentMode            String?
+  receiptId              String?
+  receiptStatus          String?
+  contributionPercentage Float    @default(0)
+  isLeadingContributor   Boolean  @default(false)
+  
+  orderId                String
+  paymentId              String?
+  status                 String   @default("PENDING")
+  
+  createdAt              DateTime @default(now())
+}
+
+model Donor {
+  id               String   @id @default(uuid())
+  name             String
+  email            String   @unique
+  totalContributed Float    @default(0)
+  dashboardAccess  Boolean  @default(false)
+  createdAt        DateTime @default(now())
+}
+
+model Impact {
+  id                     Int   @id @default(1)
+  childrenRegistered     Int   @default(0)
+  treesPlanted           Int   @default(0)
+  schoolsOnboarded       Int   @default(0)
+  csrPartners            Int   @default(0)
+  totalFundingRequired   Float @default(0)
+  totalFundingReceived   Float @default(0)
+}
+
+model SchoolLead {
+  id            String   @id @default(uuid())
+  schoolName    String
+  contactPerson String
+  email         String
+  phone         String
+  message       String?
+  createdAt     DateTime @default(now())
+}
+
+model CaseStudy {
+  id            String   @id @default(uuid())
+  slug          String   @unique
+  title         String
+  problem       String
+  intervention  String
+  outcome       String
+  impactNumbers String // JSON string
+  visuals       String // JSON string
+}
